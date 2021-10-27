@@ -1,6 +1,6 @@
 import { products } from "./helper";
-import { useCart } from "../../providers/cart";
-import './style.css';
+import ProductCard from "../ProductCard";
+import MainContainer from "../MainContainer";
 
 interface productsData {
     title: string;
@@ -13,25 +13,15 @@ interface productsData {
 const Products = () => {
 
     const productList = products as productsData[];
-    const {addProduct} = useCart();
 
     return (
-        <div className='products__container'>
+        <MainContainer title='Produtos'>
            {productList.map(({id, title, description, image, price}) => {
                return (
-                   <div key={id} className='product__card'>
-                       <img src={image} alt="ilustration" />
-                       <h4>{title}</h4>
-                       <details>
-                           <summary>Exibir Detalhes</summary>
-                           <p>{description}</p>
-                       </details>
-                       <p>{price}</p>
-                       <button onClick={() => addProduct({id, title, description, image, price})}>Adicionar</button>
-                   </div>
+                  <ProductCard key={id} id={id} title={title} description={description} image={image} price={price}></ProductCard>
                )
            })}
-        </div>
+        </MainContainer>
     )
 }
 

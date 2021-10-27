@@ -1,4 +1,5 @@
 import { products } from "./helper";
+import { useCart } from "../../providers/cart";
 import './style.css';
 
 interface productsData {
@@ -12,6 +13,7 @@ interface productsData {
 const Products = () => {
 
     const productList = products as productsData[];
+    const {addProduct} = useCart();
 
     return (
         <div className='products__container'>
@@ -25,7 +27,7 @@ const Products = () => {
                            <p>{description}</p>
                        </details>
                        <p>{price}</p>
-                       <button>Adicionar</button>
+                       <button onClick={() => addProduct({id, title, description, image, price})}>Adicionar</button>
                    </div>
                )
            })}

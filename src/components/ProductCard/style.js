@@ -32,7 +32,7 @@ export const Container = styled.div`
     button {
         width: 150px;
         height: 35px;
-        margin: 20px 0;
+        margin: 5px 0;
         font-weight: bold;
         border: none;
         border-radius: 4px;
